@@ -47,74 +47,17 @@ class MyWidget(QMainWindow):
 
     def on_date_selected(self):
         selected_date = self.reservations_calendar.selectedDate()
-        if self._selected_computer == 1:
-            reservations = self._database.get_first_reservations(selected_date.day())
-            self.reservations_list.clear()
-            self.reservations_list.addItems(reservations)
-        if self._selected_computer == 2:
-            reservations = self._database.get_second_reservations(selected_date.day())
-            self.reservations_list.clear()
-            self.reservations_list.addItems(reservations)
-        if self._selected_computer == 3:
-            reservations = self._database.get_third_reservations(selected_date.day())
-            self.reservations_list.clear()
-            self.reservations_list.addItems(reservations)
-        if self._selected_computer == 4:
-            reservations = self._database.get_fourth_reservations(selected_date.day())
-            self.reservations_list.clear()
-            self.reservations_list.addItems(reservations)
-        if self._selected_computer == 5:
-            reservations = self._database.get_fifth_reservations(selected_date.day())
-            self.reservations_list.clear()
-            self.reservations_list.addItems(reservations)
-        if self._selected_computer == 6:
-            reservations = self._database.get_sixth_reservations(selected_date.day())
-            self.reservations_list.clear()
-            self.reservations_list.addItems(reservations)
+        reservations = self._database.get_reservations(self._selected_computer ,selected_date.day())
+        self.reservations_list.clear()
+        self.reservations_list.addItems(reservations)
 
     def on_add_reservation_button_click(self) -> None:
-        if self._selected_computer == 1:
-            data, ok_pressed = QInputDialog.getText(self, "Введите параметры брони",
-                                                    "Формат ввода TG username, День, Время")
+        data, ok_pressed = QInputDialog.getText(self, "Введите параметры брони",
+                                                "Формат ввода TG username, День, Время")
+        username, data, time = data.split(', ')
+        if ok_pressed:
+            database.append_reservation(self._selected_computer, username, data, time)
 
-            username, data, time = data.split(', ')
-            if ok_pressed:
-                database.append_first_computer_reservation(username, data, time)
-        if self._selected_computer == 2:
-            data, ok_pressed = QInputDialog.getText(self, "Введите параметры брони",
-                                                    "Формат ввода TG username, День, Время")
-
-            username, data, time = data.split(', ')
-            if ok_pressed:
-                database.append_first_computer_reservation(username, data, time)
-        if self._selected_computer == 3:
-            data, ok_pressed = QInputDialog.getText(self, "Введите параметры брони",
-                                                    "Формат ввода TG username, День, Время")
-
-            username, data, time = data.split(', ')
-            if ok_pressed:
-                database.append_first_computer_reservation(username, data, time)
-        if self._selected_computer == 4:
-            data, ok_pressed = QInputDialog.getText(self, "Введите параметры брони",
-                                                    "Формат ввода TG username, День, Время")
-
-            username, data, time = data.split(', ')
-            if ok_pressed:
-                database.append_first_computer_reservation(username, data, time)
-        if self._selected_computer == 5:
-            data, ok_pressed = QInputDialog.getText(self, "Введите параметры брони",
-                                                    "Формат ввода TG username, День, Время")
-
-            username, data, time = data.split(', ')
-            if ok_pressed:
-                database.append_first_computer_reservation(username, data, time)
-        if self._selected_computer == 6:
-            data, ok_pressed = QInputDialog.getText(self, "Введите параметры брони",
-                                                    "Формат ввода TG username, День, Время")
-
-            username, data, time = data.split(', ')
-            if ok_pressed:
-                database.append_first_computer_reservation(username, data, time)
 
     def on_first_computer_button_click(self) -> None:
         self.stackedWidget.setCurrentIndex(1)

@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8349201b-3c83-4541-bf68-74796c3514d7" name="Changes" comment="бебе">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sql.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sql.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/data.db" beforeDir="false" afterPath="$PROJECT_DIR$/resources/data.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/qt.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/qt.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +111,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762254555664</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="бебе">
+      <option name="closed" value="true" />
+      <created>1762255797711</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1762255797711</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
