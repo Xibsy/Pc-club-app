@@ -2,7 +2,7 @@ import sys
 from constants import MIN_YEAR, MAX_YEAR, MIN_MONTH, MAX_MONTH, MIN_DATE, MAX_DATE
 
 from PyQt6 import uic
-from PyQt6.QtWidgets import QApplication, QMainWindow, QInputDialog
+from PyQt6.QtWidgets import QApplication, QMainWindow, QInputDialog, QDialog, QDialogButtonBox, QVBoxLayout, QLabel
 from PyQt6.QtCore import QDate
 from qdarktheme import load_stylesheet
 
@@ -35,6 +35,7 @@ class MyWidget(QMainWindow):
         self.sixth_computer_button.clicked.connect(self.on_sixth_computer_button_click)
 
         self.back_button.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+        self.start_session_button.clicked.connect(lambda: self._dialog.exec())
         self.add_reservation_button.clicked.connect(self.on_add_reservation_button_click)
 
         self.white_theme_button.triggered.connect(lambda: self.setStyleSheet(load_stylesheet('light')))
@@ -44,6 +45,7 @@ class MyWidget(QMainWindow):
         self._database.start_bd()
         self._database.update_reservations()
 
+        self._dialog = Start_session_dialog()
         self._selected_computer = int()
 
     def on_date_selected(self):
@@ -84,6 +86,23 @@ class MyWidget(QMainWindow):
         self.stackedWidget.setCurrentIndex(1)
         self._selected_computer = 6
 
+class Start_session_dialog(QDialog):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("Запуск сеанса")
+
+        QBtn = QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel
+
+        self.buttonBox = QDialogButtonBox(QBtn)
+        self.buttonBox.accepted.connect(self.accept)
+        self.buttonBox.rejected.connect(self.reject)
+
+        layout = QVBoxLayout()
+        message = QLabel("Запустить сессию?")
+        layout.addWidget(message)
+        layout.addWidget(self.buttonBox)
+        self.setLayout(layout)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

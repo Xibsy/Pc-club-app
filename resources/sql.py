@@ -76,7 +76,7 @@ class Database:
             cursor = connection.cursor()
             for table in range(1, 7):
                 cursor.execute(f'DELETE FROM {RESERVATIONS_DATABASES[table]} '
-                               f'WHERE date => {MIN_DATE} and date <= {MAX_DATE}')
+                               f'WHERE date > {MIN_DATE - 1} and date < {MAX_DATE + 1}')
 
             connection.commit()
 

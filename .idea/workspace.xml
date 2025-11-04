@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8349201b-3c83-4541-bf68-74796c3514d7" name="Changes" comment="бебе">
+    <list default="true" id="8349201b-3c83-4541-bf68-74796c3514d7" name="Changes" comment="сократи sql.py и qt.py&#10;Добавил update_reservations в sql.py">
+      <change afterPath="$PROJECT_DIR$/image.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/qt.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/qt.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/sql.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sql.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -126,12 +129,21 @@
       <option name="project" value="LOCAL" />
       <updated>1762256031852</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="сократи sql.py и qt.py&#10;Добавил update_reservations в sql.py">
+      <option name="closed" value="true" />
+      <created>1762256613459</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1762256613459</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="juj" />
     <MESSAGE value="бебе" />
-    <option name="LAST_COMMIT_MESSAGE" value="бебе" />
+    <MESSAGE value="сократи sql.py и qt.py&#10;Добавил update_reservations в sql.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="сократи sql.py и qt.py&#10;Добавил update_reservations в sql.py" />
   </component>
 </project>
