@@ -42,6 +42,7 @@ class MyWidget(QMainWindow):
 
         self._database = Database()
         self._database.start_bd()
+        self._database.update_reservations()
 
         self._selected_computer = int()
 

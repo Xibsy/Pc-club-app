@@ -1,5 +1,5 @@
 import sqlite3
-from resources.constants import DATABASE, RESERVATIONS_DATABASES
+from resources.constants import DATABASE, RESERVATIONS_DATABASES, MAX_DATE, MIN_DATE
 
 
 class Database:
@@ -42,16 +42,16 @@ class Database:
         with sqlite3.connect(self._database) as connection:
             cursor = connection.cursor()
 
-            cursor.execute('INSERT INTO Users (username, chat_id, permission) VALUES (?, ?, ?)',
-                           (username, chat_id, permission))
+            cursor.execute(f'INSERT INTO Users (username, chat_id, permission) VALUES {(username, chat_id, permission)}')
 
             connection.commit()
 
     def get_chat_id(self, username: str) -> int:
+
         with sqlite3.connect(self._database) as connection:
             cursor = connection.cursor()
 
-            cursor.execute('SELECT chat_id FROM Users WHERE username = ?', (username,))
+            cursor.execute(f'SELECT chat_id FROM Users WHERE username = {username}')
 
             ids = cursor.fetchall()[0]
 
@@ -70,6 +70,15 @@ class Database:
             for user_id in ids:
                 exit_ids.append(user_id[0])
         return exit_ids
+
+    def update_reservations(self) -> None:
+        with sqlite3.connect(self._database) as connection:
+            cursor = connection.cursor()
+            for table in range(1, 7):
+                cursor.execute(f'DELETE FROM {RESERVATIONS_DATABASES[table]} '
+                               f'WHERE date => {MIN_DATE} and date <= {MAX_DATE}')
+
+            connection.commit()
 
     def append_reservation(self, table: int, username: str, date: str, time: str) -> None:
         with sqlite3.connect(self._database) as connection:
