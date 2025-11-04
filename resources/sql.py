@@ -1,5 +1,5 @@
 import sqlite3
-from resources.constants import DATABASE
+from resources.constants import DATABASE, RESERVATIONS_DATABASES
 
 
 class Database:
@@ -26,53 +26,9 @@ class Database:
                     )
                     ''')
 
-            cursor.execute('''
-                                CREATE TABLE IF NOT EXISTS ReservationsForTheFirstComputer (
-                                id INTEGER PRIMARY KEY,
-                                username TEXT NOT NULL,
-                                date TEXT NOT NULL,
-                                time TEXT NOT NULL
-                                )
-                                ''')
-
-            cursor.execute('''
-                                CREATE TABLE IF NOT EXISTS ReservationsForASecondComputer (
-                                id INTEGER PRIMARY KEY,
-                                username TEXT NOT NULL,
-                                date TEXT NOT NULL,
-                                time TEXT NOT NULL
-                                )
-                                ''')
-
-            cursor.execute('''
-                                CREATE TABLE IF NOT EXISTS ReservationsForTheThirdComputer (
-                                id INTEGER PRIMARY KEY,
-                                username TEXT NOT NULL,
-                                date TEXT NOT NULL,
-                                time TEXT NOT NULL
-                                )
-                                ''')
-
-            cursor.execute('''
-                                CREATE TABLE IF NOT EXISTS ReservationsForTheFourthComputer (
-                                id INTEGER PRIMARY KEY,
-                                username TEXT NOT NULL,
-                                date TEXT NOT NULL,
-                                time TEXT NOT NULL
-                                )
-                                ''')
-
-            cursor.execute('''
-                                CREATE TABLE IF NOT EXISTS ReservationsForTheFifthComputer (
-                                id INTEGER PRIMARY KEY,
-                                username TEXT NOT NULL,
-                                date TEXT NOT NULL,
-                                time TEXT NOT NULL
-                                )
-                                ''')
-
-            cursor.execute('''
-                                CREATE TABLE IF NOT EXISTS ReservationsForTheSixthComputer (
+            for table in range(1, 7):
+                cursor.execute(f'''
+                                CREATE TABLE IF NOT EXISTS {RESERVATIONS_DATABASES[table]} (
                                 id INTEGER PRIMARY KEY,
                                 username TEXT NOT NULL,
                                 date TEXT NOT NULL,
@@ -114,67 +70,22 @@ class Database:
             for user_id in ids:
                 exit_ids.append(user_id[0])
         return exit_ids
-    
-    def append_first_computer_reservation(self, username: str, date: str, time: str) -> None:
+
+    def append_reservation(self, table: int, username: str, date: str, time: str) -> None:
         with sqlite3.connect(self._database) as connection:
             cursor = connection.cursor()
 
-            cursor.execute('INSERT INTO ReservationsForTheFirstComputer (username, date, time) VALUES (?, ?, ?)', 
-                           (username, date, time))
+            cursor.execute(
+                f'INSERT INTO {RESERVATIONS_DATABASES[table]} (username, date, time) VALUES {(username, date, time)}')
 
             connection.commit()
 
-    def append_second_computer_reservation(self, username: str, date: str, time: str) -> None:
-        with sqlite3.connect(self._database) as connection:
-            cursor = connection.cursor()
-
-            cursor.execute('INSERT INTO ReservationsForASecondComputer (username, date, time) VALUES (?, ?, ?)',
-                           (username, date, time))
-
-            connection.commit()
-
-    def append_third_computer_reservation(self, username: str, date: str, time: str) -> None:
-        with sqlite3.connect(self._database) as connection:
-            cursor = connection.cursor()
-
-            cursor.execute('INSERT INTO ReservationsForTheThirdComputer (username, date, time) VALUES (?, ?, ?)',
-                           (username, date, time))
-
-            connection.commit()
-
-    def append_fourth_computer_reservation(self, username: str, date: str, time: str) -> None:
-        with sqlite3.connect(self._database) as connection:
-            cursor = connection.cursor()
-
-            cursor.execute('INSERT INTO ReservationsForTheFourthComputer (username, date, time) VALUES (?, ?, ?)',
-                           (username, date, time))
-
-            connection.commit()
-
-    def append_fifth_computer_reservation(self, username: str, date: str, time: str) -> None:
-        with sqlite3.connect(self._database) as connection:
-            cursor = connection.cursor()
-
-            cursor.execute('INSERT INTO ReservationsForTheFifthComputer (username, date, time) VALUES (?, ?, ?)',
-                           (username, date, time))
-
-            connection.commit()
-
-    def append_sixth_computer_reservation(self, username: str, date: str, time: str) -> None:
-        with sqlite3.connect(self._database) as connection:
-            cursor = connection.cursor()
-
-            cursor.execute('INSERT INTO ReservationsForTheSixthComputer (username, date, time) VALUES (?, ?, ?)',
-                           (username, date, time))
-
-            connection.commit()
-
-    def get_reservations(self,table: str, date: str) -> list[str]:
+    def get_reservations(self, table: int, date: str) -> list[str]:
         data = list()
         with sqlite3.connect(self._database) as connection:
             cursor = connection.cursor()
 
-            cursor.execute('SELECT username, date, time FROM ReservationsForTheFirstComputer WHERE date = ?', (date,))
+            cursor.execute(f'SELECT username, date, time FROM {RESERVATIONS_DATABASES[table]} WHERE date = {date}')
 
             reservations = cursor.fetchall()
 
