@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>880</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Club-Center</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>gaming.png</normaloff>gaming.png</iconset>
+  </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonFollowStyle</enum>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1281</width>
+      <height>861</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="computers">
+     <widget class="QPushButton" name="third_computer_button">
+      <property name="geometry">
+       <rect>
+        <x>930</x>
+        <y>40</y>
+        <width>311</width>
+        <height>291</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777213</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string notr="true"/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>gaming.png</normaloff>gaming.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>351</width>
+        <height>291</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QLabel" name="third_computer_label">
+      <property name="geometry">
+       <rect>
+        <x>930</x>
+        <y>350</y>
+        <width>161</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string>Место 3</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="fifth_computer_button">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>450</y>
+        <width>311</width>
+        <height>291</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777213</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string notr="true"/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>gaming.png</normaloff>gaming.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>351</width>
+        <height>291</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="first_computer_button">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>40</y>
+        <width>311</width>
+        <height>291</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777213</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string notr="true"/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>gaming.png</normaloff>gaming.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>351</width>
+        <height>291</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QLabel" name="fifth_computer_label">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>760</y>
+        <width>161</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string>Место 5</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="sixth_computer_button">
+      <property name="geometry">
+       <rect>
+        <x>930</x>
+        <y>450</y>
+        <width>311</width>
+        <height>291</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777213</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string notr="true"/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>gaming.png</normaloff>gaming.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>351</width>
+        <height>291</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="second_computer_button">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>40</y>
+        <width>311</width>
+        <height>291</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777213</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string notr="true"/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>gaming.png</normaloff>gaming.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>351</width>
+        <height>291</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="fourth_computer_button">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>450</y>
+        <width>311</width>
+        <height>291</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777213</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string notr="true"/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>gaming.png</normaloff>gaming.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>351</width>
+        <height>291</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QLabel" name="second_computer_label">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>350</y>
+        <width>161</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string>Место 2</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="fourth_computer_label">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>760</y>
+        <width>161</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string>Место 4</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="first_computer_label">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>350</y>
+        <width>161</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string>Место 1</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="sixth_computer_label">
+      <property name="geometry">
+       <rect>
+        <x>930</x>
+        <y>760</y>
+        <width>161</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string>Место 6</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="settings">
+     <widget class="QCalendarWidget" name="reservations_calendar">
+      <property name="geometry">
+       <rect>
+        <x>780</x>
+        <y>30</y>
+        <width>481</width>
+        <height>321</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="reservations_list">
+      <property name="geometry">
+       <rect>
+        <x>780</x>
+        <y>390</y>
+        <width>481</width>
+        <height>421</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="remove_five_minutes_button">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>100</y>
+        <width>211</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 125); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string>Забрать 5 минут</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="start_session_button">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>100</y>
+        <width>211</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 125); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string>Начать сеанс</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="add_five_minutes_button">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>100</y>
+        <width>211</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 125); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string>Добавить 5 минут</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="remove_one_warning_button">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>330</y>
+        <width>211</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 125); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string>Убрать 1 предупреждение</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="send_warning_button">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>330</y>
+        <width>211</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 125); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string>Выслать предупреждение</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="block_session_button">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>330</y>
+        <width>211</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 125); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string>Заблокировать сеанс</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="remove_reservation_button">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>560</y>
+        <width>211</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 125); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string>Убрать выбранную бронь</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="add_reservation_button">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>560</y>
+        <width>211</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 125); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string>Добавить бронь</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="back_button">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>560</y>
+        <width>211</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 125); font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string>Назад</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1280</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="main_menu">
+    <property name="title">
+     <string>Главная</string>
+    </property>
+    <widget class="QMenu" name="themes">
+     <property name="title">
+      <string>Тема</string>
+     </property>
+     <addaction name="white_theme_button"/>
+     <addaction name="black_theme_button"/>
+    </widget>
+    <addaction name="themes"/>
+   </widget>
+   <addaction name="main_menu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_2">
+   <property name="text">
+    <string>Темная</string>
+   </property>
+  </action>
+  <action name="white_theme_button">
+   <property name="text">
+    <string>Светлая</string>
+   </property>
+  </action>
+  <action name="black_theme_button">
+   <property name="text">
+    <string>Тёмная</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
