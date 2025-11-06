@@ -3,25 +3,24 @@ from constants import MIN_YEAR, MAX_YEAR, MIN_MONTH, MAX_MONTH, MIN_DATE, MAX_DA
 
 from PyQt6 import uic
 from PyQt6.QtWidgets import QApplication, QMainWindow, QInputDialog, QDialog, QDialogButtonBox, QVBoxLayout, QLabel
-from PyQt6.QtCore import QDate
+from PyQt6.QtCore import QDate, QTimer, QTime
 from qdarktheme import load_stylesheet
+from resources.ui import Ui_MainWindow
 
 from resources.bot import database
 from resources.sql import Database
 
 
-class MyWidget(QMainWindow):
+class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
 
-        uic.loadUi('ui.ui', self)
+        self.setupUi(self)
 
         self.setStyleSheet(load_stylesheet())
 
         self.reservations_calendar.setMinimumDate(QDate(MIN_YEAR, MIN_MONTH, MIN_DATE))
         self.reservations_calendar.setMaximumDate(QDate(MAX_YEAR, MAX_MONTH, MAX_DATE))
-
-        # Set today's date as selected
         self.reservations_calendar.setSelectedDate(QDate.currentDate())
 
         # Connect signal for date selection
@@ -61,6 +60,12 @@ class MyWidget(QMainWindow):
         if ok_pressed:
             database.append_reservation(self._selected_computer, username, data, time)
 
+    def on_start_session_button_click(self) -> None:
+        if self._dialog.exec():
+            self.timer_drawer()
+
+    def timer_drawer(self) -> None:
+        ...
 
     def on_first_computer_button_click(self) -> None:
         self.stackedWidget.setCurrentIndex(1)
@@ -92,9 +97,9 @@ class Start_session_dialog(QDialog):
 
         self.setWindowTitle("Запуск сеанса")
 
-        QBtn = QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel
+        QButtotn = QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel
 
-        self.buttonBox = QDialogButtonBox(QBtn)
+        self.buttonBox = QDialogButtonBox(QButtotn)
         self.buttonBox.accepted.connect(self.accept)
         self.buttonBox.rejected.connect(self.reject)
 
@@ -106,6 +111,6 @@ class Start_session_dialog(QDialog):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = MyWidget()
+    ex = MainWindow()
     ex.show()
     sys.exit(app.exec())

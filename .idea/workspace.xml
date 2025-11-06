@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8349201b-3c83-4541-bf68-74796c3514d7" name="Changes" comment="сократи sql.py и qt.py&#10;Добавил update_reservations в sql.py">
+    <list default="true" id="8349201b-3c83-4541-bf68-74796c3514d7" name="Changes" comment="move.move">
       <change afterPath="$PROJECT_DIR$/image.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/Timer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/qt.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/qt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sql.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sql.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/ui.ui" beforeDir="false" afterPath="$PROJECT_DIR$/resources/ui.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,22 +51,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.bot.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.qt.executor&quot;: &quot;Run&quot;,
-    &quot;Python.sql.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/PycharmProjects/Pc-club-app&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.bot.executor": "Run",
+    "Python.main.executor": "Debug",
+    "Python.qt.executor": "Run",
+    "Python.sql.executor": "Run",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/PycharmProjects/Pc-club-app",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\PycharmProjects\Pc-club-app" />
@@ -137,13 +140,47 @@
       <option name="project" value="LOCAL" />
       <updated>1762256613459</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="диаложки sql-ка ну и всё">
+      <option name="closed" value="true" />
+      <created>1762275202698</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1762275202698</updated>
+    </task>
+    <task id="LOCAL-00008" summary="диаложки sql-ка ну и всё">
+      <option name="closed" value="true" />
+      <created>1762275316469</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1762275316469</updated>
+    </task>
+    <task id="LOCAL-00009" summary="диаложки sql-ка ну и всё">
+      <option name="closed" value="true" />
+      <created>1762275357155</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1762275357155</updated>
+    </task>
+    <task id="LOCAL-00010" summary="move.move">
+      <option name="closed" value="true" />
+      <created>1762275475321</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1762275475321</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="juj" />
     <MESSAGE value="бебе" />
     <MESSAGE value="сократи sql.py и qt.py&#10;Добавил update_reservations в sql.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="сократи sql.py и qt.py&#10;Добавил update_reservations в sql.py" />
+    <MESSAGE value="диаложки sql-ка ну и всё" />
+    <MESSAGE value="move.move" />
+    <option name="LAST_COMMIT_MESSAGE" value="move.move" />
   </component>
 </project>
