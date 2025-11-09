@@ -9,6 +9,8 @@ from resources.ui import Ui_MainWindow
 from resources.bot import database
 from resources.sql import Database
 
+from resources.warns import Warns
+
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -22,8 +24,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.reservations_calendar.setMaximumDate(QDate(MAX_YEAR, MAX_MONTH, MAX_DATE))
         self.reservations_calendar.setSelectedDate(QDate.currentDate())
 
-        # Connect signal for date selection
-        self.reservations_calendar.selectionChanged.connect(self.on_date_selected)
+        self.block_session_button.setEnabled(False)
 
         self.first_computer_button.clicked.connect(self.on_first_computer_button_click)
         self.second_computer_button.clicked.connect(self.on_second_computer_button_click)
@@ -32,13 +33,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.fifth_computer_button.clicked.connect(self.on_fifth_computer_button_click)
         self.sixth_computer_button.clicked.connect(self.on_sixth_computer_button_click)
 
+        self.reservations_calendar.selectionChanged.connect(self.on_date_selected)
         self.back_button.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
         self.start_session_button.clicked.connect(self.on_start_session_button_click)
         self.add_reservation_button.clicked.connect(self.on_add_reservation_button_click)
         self.add_five_minutes_button.clicked.connect(self.on_add_five_minutes_button_click)
         self.remove_five_minutes_button.clicked.connect(self.on_remove_five_minutes_button_click)
         self.block_session_button.clicked.connect(self.on_block_session_button_click)
-        self.block_session_button.setEnabled = False
+        self.remove_one_warning_button.clicked.connect(self.on_remove_one_warning_button_click)
+        self.send_warning_button.clicked.connect(self.on_send_warning_button_clicked)
 
         self.white_theme_button.triggered.connect(lambda: self.setStyleSheet(load_stylesheet('light')))
         self.black_theme_button.triggered.connect(lambda: self.setStyleSheet(load_stylesheet()))
@@ -47,8 +50,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._database.start_bd()
         self._database.update_reservations()
 
-        self._dialog = Start_session_dialog()
+        self._dialog = StartSessionDialog()
         self._selected_computer = 1
+
+        self._warns_system = Warns()
 
         self._computer_remaining_time = {i: 0 for i in range(1, 7)}
         self.update_timer = QTimer()
@@ -82,7 +87,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.update_current_display(self._selected_computer)
 
-
     def update_current_display(self, selected_computer: int) -> None:
         time_left = self._computer_remaining_time[selected_computer]
         if time_left > 0:
@@ -102,9 +106,30 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.update_current_display(self._selected_computer)
 
     def on_block_session_button_click(self) -> None:
-        #временное решение
+        self._warns_system.set_warns(self._selected_computer, 0)
+        self.update_warns()
         self._computer_remaining_time[self._selected_computer] = 0
         self.update_current_display(self._selected_computer)
+
+    def update_warns(self) -> None:
+        count_warns = self._warns_system.get_warns_for_selected_computer(self._selected_computer)
+        self.label_4.setText(f'{count_warns}')
+        if count_warns >= 2:
+            self.remove_one_warning_button.setEnabled(False)
+            self.send_warning_button.setEnabled(False)
+            self.block_session_button.setEnabled(True)
+        else:
+            self.remove_one_warning_button.setEnabled(True)
+            self.send_warning_button.setEnabled(True)
+            self.block_session_button.setEnabled(False)
+
+    def on_remove_one_warning_button_click(self) -> None:
+        self._warns_system.remove_warn(self._selected_computer)
+        self.update_warns()
+
+    def on_send_warning_button_clicked(self) -> None:
+        self._warns_system.add_warn(self._selected_computer)
+        self.update_warns()
 
     def on_first_computer_button_click(self) -> None:
         self.stackedWidget.setCurrentIndex(1)
@@ -130,7 +155,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.stackedWidget.setCurrentIndex(1)
         self._selected_computer = 6
 
-class Start_session_dialog(QDialog):
+
+class StartSessionDialog(QDialog):
     def __init__(self):
         super().__init__()
 
@@ -147,6 +173,7 @@ class Start_session_dialog(QDialog):
         layout.addWidget(message)
         layout.addWidget(self.buttonBox)
         self.setLayout(layout)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
