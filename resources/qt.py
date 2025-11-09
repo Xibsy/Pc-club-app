@@ -41,7 +41,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.remove_five_minutes_button.clicked.connect(self.on_remove_five_minutes_button_click)
         self.block_session_button.clicked.connect(self.on_block_session_button_click)
         self.remove_one_warning_button.clicked.connect(self.on_remove_one_warning_button_click)
-        self.send_warning_button.clicked.connect(self.on_send_warning_button_clicked)
+        self.send_warning_button.clicked.connect(self.on_send_warning_clicked)
 
         self.white_theme_button.triggered.connect(lambda: self.setStyleSheet(load_stylesheet('light')))
         self.black_theme_button.triggered.connect(lambda: self.setStyleSheet(load_stylesheet()))
@@ -114,7 +114,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def update_warns(self) -> None:
         count_warns = self._warns_system.get_warns_for_selected_computer(self._selected_computer)
         self.label_4.setText(f'{count_warns}')
-        if count_warns >= 2:
+        if count_warns >= 3:
             self.remove_one_warning_button.setEnabled(False)
             self.send_warning_button.setEnabled(False)
             self.block_session_button.setEnabled(True)
@@ -127,7 +127,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._warns_system.remove_warn(self._selected_computer)
         self.update_warns()
 
-    def on_send_warning_button_clicked(self) -> None:
+    def on_send_warning_clicked(self) -> None:
         self._warns_system.add_warn(self._selected_computer)
         self.update_warns()
 
