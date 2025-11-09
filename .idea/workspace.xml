@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8349201b-3c83-4541-bf68-74796c3514d7" name="Changes" comment="Победа 2">
-      <change afterPath="$PROJECT_DIR$/start_session_dialog.py" afterDir="false" />
+    <list default="true" id="8349201b-3c83-4541-bf68-74796c3514d7" name="Changes" comment="Не победа">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qt.py" beforeDir="false" afterPath="$PROJECT_DIR$/qt.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +194,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762691386740</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Не победа">
+      <option name="closed" value="true" />
+      <created>1762705284661</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1762705284661</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -219,6 +225,7 @@
     <MESSAGE value="war is over" />
     <MESSAGE value="Победа" />
     <MESSAGE value="Победа 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Победа 2" />
+    <MESSAGE value="Не победа" />
+    <option name="LAST_COMMIT_MESSAGE" value="Не победа" />
   </component>
 </project>
