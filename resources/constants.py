@@ -1,7 +1,6 @@
 from datetime import  datetime
 from datetime import timedelta
 
-
 MIN_YEAR, MIN_MONTH, MIN_DATE = map(int, str(datetime.now().date()).split('-'))
 MAX_YEAR, MAX_MONTH, MAX_DATE = map(int, str((datetime.now().date() + timedelta(days=7))).split('-'))
 

@@ -1,9 +1,8 @@
 import sys
 from constants import MIN_YEAR, MAX_YEAR, MIN_MONTH, MAX_MONTH, MIN_DATE, MAX_DATE
 
-from PyQt6 import uic
 from PyQt6.QtWidgets import QApplication, QMainWindow, QInputDialog, QDialog, QDialogButtonBox, QVBoxLayout, QLabel
-from PyQt6.QtCore import QDate, QTimer, QTime
+from PyQt6.QtCore import QDate, QTimer
 from qdarktheme import load_stylesheet
 from resources.ui import Ui_MainWindow
 
@@ -34,8 +33,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.sixth_computer_button.clicked.connect(self.on_sixth_computer_button_click)
 
         self.back_button.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
-        self.start_session_button.clicked.connect(lambda: self._dialog.exec())
+        self.start_session_button.clicked.connect(self.on_start_session_button_click)
         self.add_reservation_button.clicked.connect(self.on_add_reservation_button_click)
+        self.add_five_minutes_button.clicked.connect(self.on_add_five_minutes_button_click)
+        self.remove_five_minutes_button.clicked.connect(self.on_remove_five_minutes_button_click)
+        self.block_session_button.clicked.connect(self.on_block_session_button_click)
+        self.block_session_button.setEnabled = False
 
         self.white_theme_button.triggered.connect(lambda: self.setStyleSheet(load_stylesheet('light')))
         self.black_theme_button.triggered.connect(lambda: self.setStyleSheet(load_stylesheet()))
@@ -45,7 +48,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._database.update_reservations()
 
         self._dialog = Start_session_dialog()
-        self._selected_computer = int()
+        self._selected_computer = 1
+
+        self._computer_remaining_time = {i: 0 for i in range(1, 7)}
+        self.update_timer = QTimer()
+        self.update_timer.timeout.connect(self.update_all_timers)
+        self.update_timer.start(1000)
 
     def on_date_selected(self):
         selected_date = self.reservations_calendar.selectedDate()
@@ -62,10 +70,41 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def on_start_session_button_click(self) -> None:
         if self._dialog.exec():
-            self.timer_drawer()
+            self.start_timer()
 
-    def timer_drawer(self) -> None:
-        ...
+    def start_timer(self) -> None:
+        self._computer_remaining_time[self._selected_computer] = 7200
+
+    def update_all_timers(self) -> None:
+        for selected_computer in range(1, 7):
+            if self._computer_remaining_time[selected_computer] > 0:
+               self._computer_remaining_time[selected_computer] -= 1
+
+        self.update_current_display(self._selected_computer)
+
+
+    def update_current_display(self, selected_computer: int) -> None:
+        time_left = self._computer_remaining_time[selected_computer]
+        if time_left > 0:
+            hours = time_left // 3600
+            minutes = (time_left % 3600) // 60
+            seconds = time_left % 60
+            self.label_2.setText(f"{hours:02d}:{minutes:02d}:{seconds:02d}")
+        else:
+            self.label_2.setText("00:00:00")
+
+    def on_add_five_minutes_button_click(self) -> None:
+        self._computer_remaining_time[self._selected_computer] += 300
+        self.update_current_display(self._selected_computer)
+
+    def on_remove_five_minutes_button_click(self) -> None:
+        self._computer_remaining_time[self._selected_computer] -= 300
+        self.update_current_display(self._selected_computer)
+
+    def on_block_session_button_click(self) -> None:
+        #временное решение
+        self._computer_remaining_time[self._selected_computer] = 0
+        self.update_current_display(self._selected_computer)
 
     def on_first_computer_button_click(self) -> None:
         self.stackedWidget.setCurrentIndex(1)
