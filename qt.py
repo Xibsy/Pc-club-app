@@ -4,12 +4,12 @@ from constants import MIN_YEAR, MAX_YEAR, MIN_MONTH, MAX_MONTH, MIN_DATE, MAX_DA
 from PyQt6.QtWidgets import QApplication, QMainWindow, QInputDialog, QDialog, QDialogButtonBox, QVBoxLayout, QLabel
 from PyQt6.QtCore import QDate, QTimer
 from qdarktheme import load_stylesheet
-from resources.ui import Ui_MainWindow
+from ui import Ui_MainWindow
 
-from resources.bot import database
-from resources.sql import Database
+from bot import database
+from sql import Database
 
-from resources.warns import Warns
+from warns import Warns
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):

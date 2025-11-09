@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8349201b-3c83-4541-bf68-74796c3514d7" name="Changes" comment="war is over">
+    <list default="true" id="8349201b-3c83-4541-bf68-74796c3514d7" name="Changes" comment="Победа">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/Timer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/data.db" beforeDir="false" afterPath="$PROJECT_DIR$/resources/data.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/qt.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/qt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sql.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sql.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/qt.py" beforeDir="false" afterPath="$PROJECT_DIR$/qt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sql.py" beforeDir="false" afterPath="$PROJECT_DIR$/sql.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/warns.py" beforeDir="false" afterPath="$PROJECT_DIR$/warns.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +27,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -181,8 +182,27 @@
       <option name="project" value="LOCAL" />
       <updated>1762431741765</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Победа">
+      <option name="closed" value="true" />
+      <created>1762690968862</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1762690968862</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="juj" />
@@ -191,6 +211,7 @@
     <MESSAGE value="диаложки sql-ка ну и всё" />
     <MESSAGE value="move.move" />
     <MESSAGE value="war is over" />
-    <option name="LAST_COMMIT_MESSAGE" value="war is over" />
+    <MESSAGE value="Победа" />
+    <option name="LAST_COMMIT_MESSAGE" value="Победа" />
   </component>
 </project>

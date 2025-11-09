@@ -1,5 +1,5 @@
 import sqlite3
-from resources.constants import DATABASE, RESERVATIONS_DATABASES, MAX_DATE, MIN_DATE
+from constants import DATABASE, RESERVATIONS_DATABASES, MIN_DATE
 
 
 class Database:

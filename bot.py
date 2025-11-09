@@ -7,8 +7,8 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart, Command, CommandObject
 from aiogram.types import Message
-from resources.constants import ADMIN_CHAT_ID, TOKEN
-from resources.sql import IsNewUser, Database
+from constants import ADMIN_CHAT_ID, TOKEN
+from sql import IsNewUser, Database
 
 
 logging.basicConfig(

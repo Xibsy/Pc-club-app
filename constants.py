@@ -7,7 +7,7 @@ MAX_YEAR, MAX_MONTH, MAX_DATE = map(int, str((datetime.now().date() + timedelta(
 TOKEN = '8120034227:AAFTp099F7GbaOGSN-29FdoXi2CoI1q-u-o'
 ADMIN_CHAT_ID = 2124114677
 
-DATABASE = "data.db"
+DATABASE = "resources/data.db"
 
 RESERVATIONS_DATABASES = {
     1: 'ReservationsForTheFirstComputer', 2: 'ReservationsForASecondComputer',

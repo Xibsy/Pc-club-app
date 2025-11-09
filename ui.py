@@ -6,7 +6,7 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1280, 880)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("gaming.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("resources/gaming.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonFollowStyle)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
