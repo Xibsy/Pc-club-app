@@ -4,8 +4,6 @@ class Warns:
 
     def add_warn(self, computer: int) -> None:
         self._computers_warns[computer] += 1
-        print(self._computers_warns[computer])
-        print(self._computers_warns)
 
     def remove_warn(self, computer: int) -> None:
         if self._computers_warns[computer] != 0:

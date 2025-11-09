@@ -1,9 +1,11 @@
 import sys
 from constants import MIN_YEAR, MAX_YEAR, MIN_MONTH, MAX_MONTH, MIN_DATE, MAX_DATE
 
-from PyQt6.QtWidgets import QApplication, QMainWindow, QInputDialog, QDialog, QDialogButtonBox, QVBoxLayout, QLabel
+from PyQt6.QtWidgets import QApplication, QMainWindow, QInputDialog
 from PyQt6.QtCore import QDate, QTimer
 from qdarktheme import load_stylesheet
+
+from start_session_dialog import StartSessionDialog
 from ui import Ui_MainWindow
 
 from bot import database
@@ -154,25 +156,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def on_sixth_computer_button_click(self) -> None:
         self.stackedWidget.setCurrentIndex(1)
         self._selected_computer = 6
-
-
-class StartSessionDialog(QDialog):
-    def __init__(self):
-        super().__init__()
-
-        self.setWindowTitle("Запуск сеанса")
-
-        QButtotn = QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel
-
-        self.buttonBox = QDialogButtonBox(QButtotn)
-        self.buttonBox.accepted.connect(self.accept)
-        self.buttonBox.rejected.connect(self.reject)
-
-        layout = QVBoxLayout()
-        message = QLabel("Запустить сессию?")
-        layout.addWidget(message)
-        layout.addWidget(self.buttonBox)
-        self.setLayout(layout)
 
 
 if __name__ == '__main__':
