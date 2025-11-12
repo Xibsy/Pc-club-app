@@ -51,7 +51,7 @@ class Database:
         with sqlite3.connect(self._database) as connection:
             cursor = connection.cursor()
 
-            cursor.execute(f'SELECT chat_id FROM Users WHERE username = {username}')
+            cursor.execute(f'SELECT chat_id FROM Users WHERE username = ?', (username, ))
 
             ids = cursor.fetchall()[0]
 
