@@ -1,6 +1,8 @@
 from datetime import  datetime
 from datetime import timedelta
 
+from aiogram.types import KeyboardButton
+
 MIN_YEAR, MIN_MONTH, MIN_DATE = map(int, str(datetime.now().date()).split('-'))
 MAX_YEAR, MAX_MONTH, MAX_DATE = map(int, str((datetime.now().date() + timedelta(days=7))).split('-'))
 
@@ -14,3 +16,6 @@ RESERVATIONS_DATABASES = {
     3: 'ReservationsForTheThirdComputer', 4: 'ReservationsForTheFourthComputer',
     5: 'ReservationsForTheFifthComputer', 6: 'ReservationsForTheSixthComputer',
 }
+
+START_BUTTONS = [[KeyboardButton(text="👤 Мой профиль")], [KeyboardButton(text="🖥 Забронировать компьютер")],
+                 [KeyboardButton(text='💻 Написать разработчику')], [KeyboardButton(text='⚙ Админ панель')]]
