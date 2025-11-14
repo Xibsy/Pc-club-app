@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8349201b-3c83-4541-bf68-74796c3514d7" name="Changes" comment="Тест с школы коммит">
-      <change beforePath="$PROJECT_DIR$/.idea/Pc-club-app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Pc-club-app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="8349201b-3c83-4541-bf68-74796c3514d7" name="Changes" comment="Add exe file and add answer action for administration">
+      <change afterPath="$PROJECT_DIR$/admin_main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qt.py" beforeDir="false" afterPath="$PROJECT_DIR$/qt.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +41,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Xibsy/Pc-club-app.git&quot;,
-    &quot;accountId&quot;: &quot;f2796dc9-11c9-4112-b4ac-74df9182cbb8&quot;
+    &quot;accountId&quot;: &quot;e22adb76-d8e1-414c-81ea-88cf52c6f33e&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -85,7 +86,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-f69e5c277ee4-cbfc7b97e6b2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-252.27397.106" />
+        <option value="bundled-python-sdk-1f77c24022e5-d902c0275401-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-252.26830.99" />
       </set>
     </attachedChunks>
   </component>
@@ -217,7 +218,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762925935541</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Add exe file and add answer action for administration">
+      <option name="closed" value="true" />
+      <created>1762949283017</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1762949283017</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -274,6 +283,7 @@
     <MESSAGE value="Победа 2" />
     <MESSAGE value="Не победа" />
     <MESSAGE value="Тест с школы коммит" />
-    <option name="LAST_COMMIT_MESSAGE" value="Тест с школы коммит" />
+    <MESSAGE value="Add exe file and add answer action for administration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add exe file and add answer action for administration" />
   </component>
 </project>
