@@ -5,9 +5,11 @@ import sys
 from aiogram import Bot, Dispatcher, html, F
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
-from aiogram.filters import CommandStart, Command, CommandObject
-from aiogram.types import Message, ReplyKeyboardMarkup, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
-from constants import ADMIN_CHAT_ID, TOKEN, START_BUTTONS
+from aiogram.filters import Command, CommandObject
+from aiogram.types import Message, ReplyKeyboardMarkup
+from aiogram.utils.keyboard import ReplyKeyboardBuilder
+
+from constants import ADMIN_CHAT_ID, TOKEN, START_BUTTONS, COMPUTERS_RESERVATION_BUTTONS
 from sql import IsNewUser, Database
 
 
@@ -28,16 +30,26 @@ bot = Bot(
 dp = Dispatcher()
 
 
-@dp.message(CommandStart())
+def create_pc_reservation_buttons() -> ReplyKeyboardMarkup:
+    builder = ReplyKeyboardBuilder()
+    for button in COMPUTERS_RESERVATION_BUTTONS:
+        builder.button(text=button)
+    builder.adjust(3, 3, 1)
+    return builder.as_markup(resize_keyboard=True)
+
+
+@dp.message(F.text.in_({'/start', 'Назад'}))
 async def command_start_handler(message: Message) -> None:
     if IsNewUser(message.chat.id).check:
         database.append_new_user(message.from_user.username, message.from_user.id, 1)
     user_name = html.bold(message.from_user.full_name)
 
-    keyboard = ReplyKeyboardMarkup(keyboard=START_BUTTONS, resize_keyboard=True)
+    keyboard = ReplyKeyboardMarkup(keyboard=START_BUTTONS, resize_keyboard=True,
+        input_field_placeholder="Воспользуйтесь меню:")
 
     if message.chat.id != ADMIN_CHAT_ID:
-        keyboard = ReplyKeyboardMarkup(keyboard=START_BUTTONS[:3], resize_keyboard=True)
+        keyboard = ReplyKeyboardMarkup(keyboard=START_BUTTONS[:3], resize_keyboard=True,
+        input_field_placeholder="Воспользуйтесь меню:")
 
     await message.answer(
         f"🖐 Привет, {user_name}!\n\n"
@@ -45,6 +57,13 @@ async def command_start_handler(message: Message) -> None:
         f"Выбери действия ниже 👇",
         reply_markup=keyboard
     )
+
+
+@dp.message(F.text == '🖥 Забронировать компьютер')
+async def reservation_block(message: Message) -> None:
+
+    await message.answer(f'Выберите компьютер 💻', reply_markup=create_pc_reservation_buttons())
+
 
 
 @dp.message(Command('br'), F.from_user.id == ADMIN_CHAT_ID)
