@@ -1,5 +1,6 @@
 import sys
-from constants import MIN_YEAR, MAX_YEAR, MIN_MONTH, MAX_MONTH, MIN_DATE, MAX_DATE
+
+from constants import MIN_YEAR, MAX_YEAR, MIN_MONTH, MAX_MONTH, MIN_DATE, MAX_DATE, COMPUTER_INDEX
 
 from PyQt6.QtWidgets import QApplication, QMainWindow, QInputDialog
 from PyQt6.QtCore import QDate, QTimer
@@ -27,12 +28,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.block_session_button.setEnabled(False)
 
-        self.first_computer_button.clicked.connect(self.on_first_computer_button_click)
-        self.second_computer_button.clicked.connect(self.on_second_computer_button_click)
-        self.third_computer_button.clicked.connect(self.on_third_computer_button_click)
-        self.fourth_computer_button.clicked.connect(self.on_fourth_computer_button_click)
-        self.fifth_computer_button.clicked.connect(self.on_fifth_computer_button_click)
-        self.sixth_computer_button.clicked.connect(self.on_sixth_computer_button_click)
+        self.first_computer_button.clicked.connect(self.on_computer_button_click)
+        self.second_computer_button.clicked.connect(self.on_computer_button_click)
+        self.third_computer_button.clicked.connect(self.on_computer_button_click)
+        self.fourth_computer_button.clicked.connect(self.on_computer_button_click)
+        self.fifth_computer_button.clicked.connect(self.on_computer_button_click)
+        self.sixth_computer_button.clicked.connect(self.on_computer_button_click)
 
         self.reservations_calendar.selectionChanged.connect(self.on_date_selected)
         self.back_button.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
@@ -132,29 +133,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._warns_system.add_warn(self._selected_computer)
         self.update_warns()
 
-    def on_first_computer_button_click(self) -> None:
+    def on_computer_button_click(self) -> None:
         self.stackedWidget.setCurrentIndex(1)
-        self._selected_computer = 1
-
-    def on_second_computer_button_click(self) -> None:
-        self.stackedWidget.setCurrentIndex(1)
-        self._selected_computer = 2
-
-    def on_third_computer_button_click(self) -> None:
-        self.stackedWidget.setCurrentIndex(1)
-        self._selected_computer = 3
-
-    def on_fourth_computer_button_click(self) -> None:
-        self.stackedWidget.setCurrentIndex(1)
-        self._selected_computer = 4
-
-    def on_fifth_computer_button_click(self) -> None:
-        self.stackedWidget.setCurrentIndex(1)
-        self._selected_computer = 5
-
-    def on_sixth_computer_button_click(self) -> None:
-        self.stackedWidget.setCurrentIndex(1)
-        self._selected_computer = 6
+        self._selected_computer = COMPUTER_INDEX[self.sender().objectName()]
 
 
 if __name__ == '__main__':

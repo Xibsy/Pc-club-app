@@ -17,6 +17,10 @@ RESERVATIONS_DATABASES = {
     5: 'ReservationsForTheFifthComputer', 6: 'ReservationsForTheSixthComputer',
 }
 
+COMPUTER_INDEX = {'first_computer_button': 1, 'second_computer_button': 2, 'third_computer_button': 3,
+                  'fourth_computer_button': 4, 'fifth_computer_button': 5, 'sixth_computer_button': 6}
+
+
 START_BUTTONS = [[KeyboardButton(text="👤 Мой профиль")], [KeyboardButton(text="🖥 Забронировать компьютер")],
                  [KeyboardButton(text='💻 Написать разработчику')], [KeyboardButton(text='⚙ Админ панель')]]
 
