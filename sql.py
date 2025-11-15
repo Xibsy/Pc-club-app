@@ -60,6 +60,15 @@ class Database:
 
             connection.commit()
 
+    def set_stars(self, set_stars: int, chat_id: int) -> None:
+        with sqlite3.connect(self._database) as connection:
+            cursor = connection.cursor()
+
+            cursor.execute(
+                f'UPDATE Users SET stars = {set_stars} WHERE chat_id = {chat_id}')
+
+            connection.commit()
+
     def get_stars_balance(self, chat_id: int) -> int:
         with sqlite3.connect(self._database) as connection:
             cursor = connection.cursor()
