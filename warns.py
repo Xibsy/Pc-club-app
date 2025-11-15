@@ -1,6 +1,8 @@
+from dataclasses import dataclass
+
+@dataclass
 class Warns:
-    def __init__(self) -> None:
-        self._computers_warns = {i: 0 for i in range(1, 7)}
+    _computers_warns = {i: 0 for i in range(1, 7)}
 
     def add_warn(self, computer: int) -> None:
         self._computers_warns[computer] += 1

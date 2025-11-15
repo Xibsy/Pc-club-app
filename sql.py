@@ -15,6 +15,7 @@ class Database:
             id INTEGER PRIMARY KEY,
             username TEXT NOT NULL,
             chat_id INTEGER NOT NULL,
+            stars INTEGER,
             permission INTEGER
             )
             ''')
@@ -42,9 +43,31 @@ class Database:
         with sqlite3.connect(self._database) as connection:
             cursor = connection.cursor()
 
-            cursor.execute(f'INSERT INTO Users (username, chat_id, permission) VALUES {(username, chat_id, permission)}')
+            cursor.execute(f'INSERT INTO Users (username, chat_id, stars, permission) VALUES '
+                           f'{(username, chat_id, 0, permission)}')
 
             connection.commit()
+
+    def add_stars(self, added_stars: int, chat_id: int) -> None:
+        with sqlite3.connect(self._database) as connection:
+            cursor = connection.cursor()
+
+            cursor.execute(f'SELECT stars FROM Users WHERE chat_id = {chat_id}')
+            stars_balance = cursor.fetchall()[0]
+
+            cursor.execute(
+                f'UPDATE Users SET stars = {stars_balance[0] + added_stars} WHERE chat_id = {chat_id}')
+
+            connection.commit()
+
+    def get_stars_balance(self, chat_id: int) -> int:
+        with sqlite3.connect(self._database) as connection:
+            cursor = connection.cursor()
+
+            cursor.execute(f'SELECT stars FROM Users WHERE chat_id = {chat_id}')
+            stars_balance = cursor.fetchall()[0]
+            return stars_balance[0]
+
 
     def get_chat_id(self, username: str) -> int:
 

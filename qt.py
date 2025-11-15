@@ -8,7 +8,6 @@ from qdarktheme import load_stylesheet
 from start_session_dialog import StartSessionDialog
 from ui import Ui_MainWindow
 
-from bot import database
 from sql import Database
 
 from warns import Warns
@@ -73,7 +72,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                                                 "Формат ввода TG username, День, Время")
         username, data, time = data.split(', ')
         if ok_pressed:
-            database.append_reservation(self._selected_computer, username, data, time)
+            self._database.append_reservation(self._selected_computer, username, data, time)
 
     def on_start_session_button_click(self) -> None:
         if self._dialog.exec():
