@@ -28,50 +28,34 @@ class Reservation(StatesGroup):
     time = State()
 
 
+class Feedback(StatesGroup):
+    message = State()
+
+
 class BotHandler:
     def __init__(self):
-        self._database = Database()
         self._bot = Bot(
             token=TOKEN,
             default=DefaultBotProperties(parse_mode=ParseMode.HTML)
         )
         self._dp = Dispatcher()
-        self._router = Router()
         self._register_handlers()
 
+        self._database = Database()
+
     def _register_handlers(self):
-        self._dp.message.register(self.get_inline_btn_link, F.text == 'Давай инлайн!')
+        self._dp.message.register(self.feedback, F.text == '💻 Написать разработчику')
+        self._dp.message.register(self.send_feedback_to_admin, Feedback.message)
+
+        self._dp.message.register(self.admin_helps_command, F.text == '⚙ Админ панель')
+        self._dp.message.register(self.broadcast, Command('br'), F.from_user.id == ADMIN_CHAT_ID)
+        self._dp.message.register(self.ls_message, Command('answer'), F.from_user.id == ADMIN_CHAT_ID)
+
         self._dp.message.register(self.command_start_handler, F.text.in_({'/start', 'Назад'}))
-        self._dp.message.register(self.user_profile, F.text == '👤 Мой профиль')
         self._dp.message.register(self.reservation_block, F.text == '🖥 Забронировать компьютер')
         self._dp.callback_query.register(self.set_reservation_date, F.data.in_({str(_) for _ in range(1, 7)}))
-        self._dp.message.register(self.broadcast, Command('br'), F.from_user.id == ADMIN_CHAT_ID)
-        self._dp.message.register(self.get_chat_id, Command('answer'), F.from_user.id == ADMIN_CHAT_ID)
-        self._dp.message.register(self.command_help_handler, Command("help"))
-
-        self._dp.message.register(self.send_invoice_handler, F.text == 'Оплатить 100 звёзд ⭐️')
-        self._dp.pre_checkout_query.register(self.pre_checkout_handler)
-        self._dp.message.register(self.pay_support_handler, Command(commands="paysupport"))
-
-    @staticmethod
-    def payment_keyboard():
-        builder = InlineKeyboardBuilder()
-        builder.button(text=f"Оплатить 100⭐️", pay=True)
-        return builder.as_markup()
-
-    @staticmethod
-    def payment_keyboard_without_payment():
-        builder = ReplyKeyboardBuilder()
-        builder.button(text=f"Оплатить 100 звёзд ⭐️")
-        builder.button(text=f"Назад")
-        return builder.as_markup(resize_keyboard=True)
-
-    @staticmethod
-    def ease_link_kb():
-        inline_kb_list = [
-            [InlineKeyboardButton(text="Мой хабр", url='https://habr.com/ru/users/yakvenalex/')],
-            [InlineKeyboardButton(text="Мой Telegram", url='tg://resolve?domain=yakvenalexx')]]
-        return InlineKeyboardMarkup(inline_keyboard=inline_kb_list)
+        self._dp.callback_query.register(self.set_reservation_time, F.data.in_(DATE_RANGE))
+        self._dp.message.register(self.end_reservation)
 
     @staticmethod
     def create_pc_reservation_buttons() -> InlineKeyboardMarkup:
@@ -99,7 +83,7 @@ class BotHandler:
                                        input_field_placeholder="Воспользуйтесь меню:")
 
         if message.chat.id != ADMIN_CHAT_ID:
-            keyboard = ReplyKeyboardMarkup(keyboard=START_BUTTONS[:3], resize_keyboard=True,
+            keyboard = ReplyKeyboardMarkup(keyboard=START_BUTTONS[:2], resize_keyboard=True,
                                            input_field_placeholder="Воспользуйтесь меню:")
 
         await message.answer(
@@ -109,35 +93,6 @@ class BotHandler:
             reply_markup=keyboard
         )
 
-    async def user_profile(self, message: Message) -> None:
-        await message.answer(f'Ваш стар баланс {html.bold(self._database.get_stars_balance(message.chat.id))}',
-                             reply_markup=self.payment_keyboard_without_payment())
-
-    async def send_invoice_handler(self, message: Message):
-        prices = [LabeledPrice(label="XTR", amount=100)]
-        await message.answer_invoice(
-            title="Пополнить баланс",
-            description="Пополнить свой баланс на 100 звёзд!",
-            prices=prices,
-            provider_token="",
-            payload="channel_support",
-            currency="XTR",
-            reply_markup=self.payment_keyboard(),
-        )
-        self._database.add_stars(100, message.chat.id)
-
-    async def pre_checkout_handler(self, pre_checkout_query: PreCheckoutQuery):
-        await pre_checkout_query.answer(ok=True)
-        await self._bot.send_message(ADMIN_CHAT_ID, 'Ещё одна проверочка =)')
-
-    async def pay_support_handler(self, message: Message):
-        await message.answer(
-            text="Добровольные пожертвования не подразумевают возврат средств, "
-                 "однако, если вы очень хотите вернуть средства - свяжитесь с нами.")
-
-    async def get_inline_btn_link(self, message: Message):
-        await message.answer('Вот тебе инлайн клавиатура со ссылками!', reply_markup=self.ease_link_kb())
-
     async def reservation_block(self,
                                 message: Message,
                                 state: FSMContext) -> None:
@@ -146,14 +101,33 @@ class BotHandler:
 
     async def set_reservation_date(self, callback: CallbackQuery,
                                 state: FSMContext) -> None:
-        await callback.answer('Вииии')
-        await state.update_data(computer=int(callback.data))
+        await callback.answer()
+        await state.update_data(computer=callback.data)
         await callback.message.edit_text(text='Выберите дату 📅', reply_markup=self.create_dates_buttons())
 
     async def set_reservation_time(self, callback: CallbackQuery, state: FSMContext) -> None:
+        await callback.answer()
         await state.update_data(date=callback.data)
         await callback.message.edit_text(text=f'Напишите удобное вам время в форма Часы:Минуты\n'
                                               f'{html.quote('Пример: 09:41')}')
+
+    async def end_reservation(self, message: Message, state: FSMContext) -> None:
+        await state.update_data(time=message.text)
+        data = await state.get_data()
+        await message.answer(f'Ваша бронь на {data['time']}, {data['date']} числа, место {data['computer']}')
+        self._database.append_reservation(int(data['computer']), message.from_user.username, data['date'], data['time'])
+        await state.clear()
+
+    async def feedback(self, message: Message, state: FSMContext) -> None:
+        await state.set_state(Feedback.message)
+        await message.answer(f'Напишите свой отзыв/баг/и т.д.\n\n{html.bold('Только текстовые сообщения')}')
+
+    async def send_feedback_to_admin(self, message: Message, state: FSMContext) -> None:
+        await state.update_data(message=message.text)
+        data = await state.get_data()
+        await message.answer('Сообщение успешно отправлено')
+        await self._bot.send_message(ADMIN_CHAT_ID, f'{message.from_user.username}: {data['message']}')
+        await state.clear()
 
     async def broadcast(self, message: Message, command: CommandObject) -> None:
         broadcast_text = command.args
@@ -164,14 +138,15 @@ class BotHandler:
             await self._bot.send_message(id, broadcast_text)
         await message.answer(f'Вы отправили всем сообщение {html.bold(broadcast_text)}')
 
-    async def get_chat_id(self, message: Message, command: CommandObject):
+    async def ls_message(self, message: Message, command: CommandObject):
         broadcast_text = command.args.split(', ')
         await self._bot.send_message(self._database.get_chat_id(broadcast_text[0]),
                                     f'⚙ Администратор отправил вам сообщение: {html.bold(broadcast_text[1])}')
 
-    async def command_help_handler(self, message: Message) -> None:
+    async def admin_helps_command(self, message: Message) -> None:
         help_text = f"""
-/kaki
+/br (сообщение) - отправить всем пользователям сообщение
+/answer (юзернейм), (сообщение) - отправить сообщение конкретному пользователю
     """
         await message.answer(help_text)
 

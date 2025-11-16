@@ -14,7 +14,7 @@ end_date = datetime(MAX_YEAR, MAX_MONTH, MAX_DATE)
 DATE_RANGE = date_range(
     min(start_date, end_date),
     max(start_date, end_date)
-).strftime('%d/%m').tolist()
+).strftime('%d').tolist()
 
 TOKEN = '8120034227:AAFTp099F7GbaOGSN-29FdoXi2CoI1q-u-o'
 ADMIN_CHAT_ID = 2124114677
@@ -31,7 +31,7 @@ COMPUTER_INDEX = {'first_computer_button': 1, 'second_computer_button': 2, 'thir
                   'fourth_computer_button': 4, 'fifth_computer_button': 5, 'sixth_computer_button': 6}
 
 
-START_BUTTONS = [[KeyboardButton(text="👤 Мой профиль")], [KeyboardButton(text="🖥 Забронировать компьютер")],
+START_BUTTONS = [[KeyboardButton(text="🖥 Забронировать компьютер")],
                  [KeyboardButton(text='💻 Написать разработчику')], [KeyboardButton(text='⚙ Админ панель')]]
 
 COMPUTERS_RESERVATION_BUTTONS = ['Первый 💻', 'Второй 💻', 'Третий 💻',
